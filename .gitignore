@@ -1,0 +1,5 @@
+node_modules/
+old/
+__pycache__/
+_*.*
+.antigravitycli

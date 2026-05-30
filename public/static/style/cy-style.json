@@ -1,0 +1,72 @@
+[
+    {
+        "selector": "node",
+        "css": {
+            "color": "rgb(0,0,0)",
+            "label": "",
+            "shape": "rectangle",
+            "text-opacity": 1,
+            "text-valign": "center",
+            "text-halign": "center",
+            "z-index": 2,
+            "background-color": "white",
+            "text-wrap": "wrap",
+            "border-width": 1,
+            "borderColor": "lightgray"
+        }
+    },
+    {
+        "selector": "edge",
+        "css": {
+            "label": "",
+            "curve-style": "bezier",
+            "width": 2,
+            "text-margin-x": 0,
+            "text-margin-y": -10,
+            "text-wrap": "wrap",
+            "target-arrow-shape": "triangle",
+            "target-arrow-color": "black",
+            "target-text-margin-x": -10,
+            "target-text-offset": 10,
+            "target-distance-from-node": 3,
+            "source-text-margin-x": 10,
+            "source-text-offset": 10,
+            "line-dash-pattern": "4 6",
+            "line-color": "black"
+        }
+    },
+    {
+        "selector": ":parent",
+        "css": {
+            "border-width": 0.1,
+            "z-index": 0,
+            "background-color": "gainsboro",
+            "opacity": 0.9,
+            "label": ""
+        }
+    },
+    {
+        "selector": ":selected",
+        "css": {
+            "overlay-color": "#0000ff",
+            "overlay-opacity": 0.3
+        }
+    },
+    {
+        "selector": ".target-jundate",
+        "css": {
+            "target-arrow-shape": "vee",
+            "target-label": "順立て",
+            "target-arrow-color": "red",
+            "arrow-scale": 3
+        }
+    },
+    {
+        "selector": ".target-store",
+        "css": {
+            "target-arrow-shape": "square",
+            "target-label": "ストア",
+            "target-arrow-color": "purple"
+        }
+    }
+]

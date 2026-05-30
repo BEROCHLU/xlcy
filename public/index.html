@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>xlcy</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href="./static/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="./static/css/mermaid.min.css" rel="stylesheet">
+	<link href="./static/css/cyber.css" rel="stylesheet">
+	<script src="./static/vendor/jquery-3.7.1.min.js"></script>
+	<script src="./static/vendor/cytoscape.min.js"></script>
+	<script src="./static/vendor/dagre.min.js"></script>
+	<script src="./static/vendor/cytoscape-dagre.min.js"></script>
+	<script src="./static/vendor/popper.min.js"></script>
+	<script src="./static/vendor/cytoscape-popper.js"></script>
+	<script src="./static/vendor/tippy-bundle.umd.min.js"></script>
+	<script src="./static/vendor/gridjs.umd.js"></script>
+	<script src="./static/vendor/selection.umd.js"></script>
+	<script src="./static/vendor/lodash.min.js"></script>
+	<script src="./static/vendor/FileSaver.min.js"></script>
+	<script src="./static/vendor/moment.min.js"></script>
+	<script src="./static/vendor/xlsx.mini.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="status-bar">
+			<span id="result"></span>
+			<button class="button-menu">Menu</button>
+		</div>
+		<nav>
+			<ul class="tab-of-list">
+				<li class="active-tab">TAB 1</li>
+				<li>TAB 2</li>
+			</ul>
+			<div id="panel_group">
+				<div class="active-panel" name="tab1">
+					<fieldset>
+						<legend>UPLOAD FILE</legend>
+						<p>
+							<select id="xlsx_file">
+							</select>
+							<button id="show_demo">Show File</button>
+							<button class="save-button emoji" type="button">💾</button>
+						</p>
+						<p>
+							<button id="upload_json">Save Layout</button>
+							<button id="fetch_json">Restore Layout</button>
+						</p>
+					</fieldset>
+					<fieldset>
+						<legend>LOCAL FILE</legend>
+						<p>
+							<label for="input_xlsx" class="label-button">Select and Show File</label>
+							<input type="file" id="input_xlsx" class="hidden-element" accept=".xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.macroEnabled.12">
+						</p>
+						<p class="save-restore">
+							<label for="download_json" class="label-button">Save Layout</label>
+							<button id="download_json" class="hidden-element"></button>
+							<label for="restore_json" class="label-button">Restore Layout</label>
+							<input type="file" id="restore_json" class="hidden-element" accept=".json,application/json">
+						</p>
+					</fieldset>
+					<p class="hidden-element">
+						<label for="edge_type">Edge Style</label>
+						<select id="edge_type">
+							<option value="bezier">bezier</option>
+							<option value="straight">straight</option>
+							<option value="taxi">taxi</option>
+						</select>
+					</p>
+					<fieldset>
+						<legend>MEMO VISIBILITY</legend>
+						<p>
+							<button class="show-tippy">Show All Memos</button>
+							<button class="hide-tippy">Hide All Memos</button>
+						</p>
+					</fieldset>
+					<fieldset>
+						<legend>CALCULATE COST AND SHOW PATH</legend>
+						<div class="path-calc-container">
+							<div class="path-calc-row">
+								<button class="lt">Calculate Path</button>
+								<span class="lt-unit"></span>
+							</div>
+							<div class="path-calc-row">
+								<select id="lt_start">
+								</select>
+							</div>
+							<div class="path-calc-row arrow-row">
+								<span class="path-arrow">↓</span>
+							</div>
+							<div class="path-calc-row">
+								<select id="lt_end">
+								</select>
+							</div>
+						</div>
+						<textarea id="textarea_path" rows="5"></textarea>
+					</fieldset>
+					<div class="grid-title" id="node_edge">ELEMENT</div>
+					<table id="grid_node"></table>
+					<div class="grid-title">IN</div>
+					<table id="grid_in"></table>
+					<div class="grid-title">OUT</div>
+					<table id="grid_out"></table>
+					<a href='./static/licenses/LICENSE.txt' target='_blank' rel='noopener'>Open Source Licenses</a>
+				</div>
+				<div name="tab2">
+					<div class="grid-title">All Models</div>
+					<span><button id="click_allon">all on</button></span>
+					<span><button id="click_alloff">all off</button></span>
+					<table id="grid_model"></table>
+					<div class="grid-title">All Nodes</div>
+					<table id="grid_nodeall"></table>
+					<div class="grid-title">All Edges</div>
+					<table id="grid_edgeall"></table>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<main class="wrapper">
+		<div class="grid-wrapper">
+			<grid1>
+				<div id="cy"></div>
+			</grid1>
+		</div>
+	</main>
+	<script src="./static/js/server-fetch.js"></script>
+	<script src="./static/js/workbook-utils.js"></script>
+	<script src="./static/js/gridjs-updater.js"></script>
+	<script src="./static/js/tippy-attach.js"></script>
+	<script src="./static/js/cytoscape-gestures.js"></script>
+	<script src="./static/js/jqtab.js"></script>
+	<script src="./static/js/entry.js"></script>
+</body>
+
+</html>

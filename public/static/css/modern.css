@@ -1,0 +1,260 @@
+@charset "utf-8";
+
+body {
+    /* 1. 高さを画面いっぱいにし、Flexboxを有効にする */
+    height: 100vh;
+    margin: 0;
+    background-color: #efefef;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 余計なスクロールバーが出るのを防ぐ */
+}
+
+header {
+    align-items: center;
+    background: darkgray;
+    padding: .2rem .4rem;
+    /* 2. widthの計算をシンプルに */
+    width: 100%;
+    box-sizing: border-box; /* paddingを含めて100%にする */
+    position: relative;
+    /* ※ flexコンテナ内なので、中身のコンテンツに合わせて自動で高さが確保されます */
+}
+
+main.wrapper {
+    /* 3. ヘッダーが使った以外の「残りの高さ」をすべて埋める */
+    flex: 1;
+    width: 100%;
+    position: relative;
+    /* height: calc(100% - 1.8rem); は削除 */
+}
+
+#cy {
+    height: 100%;
+    width: 100%;
+    background-color: #efefef;
+    background-image:
+        linear-gradient(#d8d8d8 1px, transparent 1px),
+        linear-gradient(90deg, #d8d8d8 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.grid-wrapper {
+    display: grid;
+    height: 100%;
+    grid-template:
+        "grid1" 1fr / 1fr;
+}
+
+grid1 {
+    display: block;
+    grid-area: grid1;
+    background-color: #efefef;
+}
+
+.hidden-element {
+    display: none;
+    visibility: hidden;
+}
+
+.label-button {
+    background-color: #808080;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul.tab-of-list {
+    list-style-type: none;
+    margin: 0;
+    /* タブが並んでいる背景色 */
+    background-color: #efefef;
+}
+
+ul.tab-of-list::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+ul.tab-of-list>li {
+    float: left;
+    color: #808080;
+    /* 非アクティブのタブ背景色 */
+    background: silver;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    padding: 5px 5px;
+    margin-right: 2px;
+    width: 7rem;
+    text-align: center;
+}
+
+ul.tab-of-list>li:nth-of-type(1) {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: -40px;
+}
+
+ul.tab-of-list>li:not(:nth-of-type(1)) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ul.tab-of-list>li.active-tab {
+    /* アクティブのタブ背景色 */
+    background-color: #e0e0e0;
+    color: gray;
+    font-weight: bold;
+}
+
+.active-panel {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#panel_group>div:not(.active-panel) {
+    display: none;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+}
+
+fieldset {
+    border: 2px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+legend,
+.grid-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: gray;
+}
+
+button {
+    background-color: #808080;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.emoji {
+    font-size: 16px;
+    padding: 2px;
+}
+
+.button-menu {
+    background-color: #808080;
+    color: white;
+    border: none;
+    padding: .4rem .6rem;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    line-height: 1;
+}
+
+#result {
+    color: dimgray;
+    font-size: 13px;
+    padding-top: 3px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* メニュー */
+nav {
+    top: 2.1rem;    /* ヘッダーの高さ分だけ上を開ける */
+    bottom: 0;      /* 画面の一番下までしっかり伸ばす */
+    background: #e0e0e0;
+    z-index: 1;
+    right: 0.0rem;
+    overflow-x: hidden;
+    text-align: left;
+    width: 0;
+    /* transition: .2s; */
+    
+    /* ★ここがポイント：absolute から fixed に変更 */
+    position: fixed; 
+}
+
+/* メニューを開いた時 */
+nav.open-menu {
+    width: 33.3%;
+    opacity: 1;
+}
+
+#download_sample {
+    font-size: 15px;
+}
+
+.tippy-box {
+    font-size: 12px;
+}
+
+.lt-unit {
+    font-size: large;
+}
+
+textarea {
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+select {
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+#textarea_path {
+    width: 99%;
+}
+
+a {
+    color: gray;
+}
+
+.path-calc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.path-calc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.path-calc-row select {
+    flex: 1;
+    min-width: 0;
+}
+
+.path-calc-row.arrow-row {
+    justify-content: center;
+}
+
+.path-arrow {
+    flex-shrink: 0;
+    font-weight: bold;
+    color: gray;
+}

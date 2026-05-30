@@ -1,0 +1,244 @@
+@charset "utf-8";
+
+body {
+    height: calc(100vh - 1.0rem);
+    margin: 4px;
+    background-color: #fdeff2;
+    font-family: "Arial", sans-serif;
+}
+
+header {
+    align-items: center;
+    background: #ffe6f0;
+    padding: .2rem .4rem .2rem .4rem;
+    width: calc(100% - 0.8rem);
+    position: relative;
+}
+
+main.wrapper {
+    height: calc(100% - 1.8rem);
+    width: 100%;
+    position: relative;
+}
+
+#cy {
+    height: 100%;
+    width: 100%;
+}
+
+.grid-wrapper {
+    display: grid;
+    height: 100%;
+    grid-template:
+        "grid1" 1fr / 1fr;
+}
+
+grid1 {
+    display: block;
+    grid-area: grid1;
+    background-color: inherit;
+}
+
+.hidden-element {
+    display: none;
+    visibility: hidden;
+}
+
+.label-button {
+    background-color: #ff80bf;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul.tab-of-list {
+    list-style-type: none;
+    margin: 0;
+    /* タブが並んでいる背景色 */
+    background-color: #fdeff2;
+}
+
+ul.tab-of-list::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+ul.tab-of-list>li {
+    float: left;
+    color: #ff80bf;
+    /* 非アクティブのタブ背景色 */
+    background: #feebef;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    padding: 5px 5px;
+    margin-right: 2px;
+    width: 7rem;
+    text-align: center;
+}
+
+ul.tab-of-list>li:nth-of-type(1) {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: -40px;
+}
+
+ul.tab-of-list>li:not(:nth-of-type(1)) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ul.tab-of-list>li.active-tab {
+    /* アクティブのタブ背景色 */
+    background-color: #ffe6f0;
+    color: #ff3399;
+    font-weight: bold;
+}
+
+.active-panel {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#panel_group>div:not(.active-panel) {
+    display: none;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+}
+
+fieldset {
+    border: 2px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+legend,
+.grid-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff3399;
+}
+
+button {
+    background-color: #ff80bf;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.emoji {
+    font-size: 16px;
+    padding: 2px;
+}
+
+.button-menu {
+    background-color: #ff80bf;
+    color: white;
+    border: none;
+    padding: .4rem .6rem;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    line-height: 1;
+}
+
+#result {
+    color: #ff3399;
+    font-size: 13px;
+    padding-top: 3px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* メニュー */
+nav {
+    height: calc(100vh - 2.8rem);
+    background: #ffe6f0;
+    z-index: 1;
+    top: 2.1rem;
+    right: 0.0rem;
+    overflow-x: hidden;
+    text-align: left;
+    width: 0;
+    /*transition: .2s;*/
+    position: absolute;
+}
+
+/* メニューを開いた時 */
+nav.open-menu {
+    width: 33.3%;
+    opacity: 1;
+}
+
+#download_sample {
+    font-size: 15px;
+}
+
+.tippy-box {
+    font-size: 12px;
+}
+
+.lt-unit {
+    font-size: large;
+}
+
+textarea {
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+select {
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+#textarea_path {
+    width: 99%;
+}
+
+a {
+    color: #ff3399;
+}
+
+.path-calc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.path-calc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.path-calc-row select {
+    flex: 1;
+    min-width: 0;
+}
+
+.path-calc-row.arrow-row {
+    justify-content: center;
+}
+
+.path-arrow {
+    flex-shrink: 0;
+    font-weight: bold;
+    color: #ff3399;
+}

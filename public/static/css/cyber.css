@@ -1,0 +1,304 @@
+@charset "utf-8";
+
+/* =========================================
+   サイバーパンクテーマ（レイアウト構造は維持）
+========================================= */
+
+body {
+    /* 1. 高さを画面いっぱいにし、Flexboxを有効にする */
+    height: 100vh;
+    margin: 0;
+    /* 背景を深いダークに、文字をネオンシアンに */
+    background-color: #09090b;
+    color: #00f3ff;
+    /* サイバーパンクらしい等幅（ターミナル風）フォント */
+    font-family: "Courier New", Courier, monospace, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 余計なスクロールバーが出るのを防ぐ */
+}
+
+header {
+    align-items: center;
+    background: #121217;
+    padding: .2rem .4rem;
+    /* 2. widthの計算をシンプルに */
+    width: 100%;
+    box-sizing: border-box; /* paddingを含めて100%にする */
+    position: relative;
+    /* サイバーパンク風のネオンボーダー */
+    border-bottom: 1px solid #ff003c;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+}
+
+main.wrapper {
+    /* 3. ヘッダーが使った以外の「残りの高さ」をすべて埋める */
+    flex: 1;
+    width: 100%;
+    position: relative;
+}
+
+#cy {
+    height: 100%;
+    width: 100%;
+    /* 背景色とグリッドは親要素(grid1)に任せるため透明にする */
+    background-color: transparent;
+    background-image: none;
+    
+    /* ★魔法のフィルター：黒文字を白にしつつ、赤や緑の色相はそのままキープ！ */
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+}
+
+.grid-wrapper {
+    display: grid;
+    height: 100%;
+    grid-template:
+        "grid1" 1fr / 1fr;
+}
+
+grid1 {
+    display: block;
+    grid-area: grid1;
+    /* 背景とネオングリッドをこちら(下敷き)に設定する */
+    background-color: #09090b;
+    background-image:
+        linear-gradient(rgba(0, 243, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.hidden-element {
+    display: none;
+    visibility: hidden;
+}
+
+/* ボタンのサイズ（padding/border）は変えずにデザインだけ変更 */
+.label-button, button {
+    background-color: #000;
+    /* サイズが変わらないよう内側に線を引く */
+    box-shadow: inset 0 0 0 1px #00f3ff, 0 0 5px rgba(0, 243, 255, 0.3);
+    border: none;
+    color: #00f3ff;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 0px; /* シャープな角に */
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.label-button:hover, button:hover {
+    background-color: #00f3ff;
+    color: #000;
+    box-shadow: 0 0 10px #00f3ff;
+}
+
+ul.tab-of-list {
+    list-style-type: none;
+    margin: 0;
+    /* タブが並んでいる背景色 */
+    background-color: #09090b;
+    border-bottom: 1px solid #ff003c; /* サイバーパンクなマゼンタのベースライン */
+}
+
+ul.tab-of-list::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+ul.tab-of-list>li {
+    float: left;
+    color: #444; /* 非アクティブは暗く */
+    /* 非アクティブのタブ背景色 */
+    background: #111;
+    border-radius: 0; /* シャープに */
+    cursor: pointer;
+    padding: 5px 5px;
+    margin-right: 2px;
+    width: 7rem;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px #333;
+}
+
+ul.tab-of-list>li:nth-of-type(1) {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: -40px; /* ★元の特殊マージンを維持 */
+}
+
+ul.tab-of-list>li:not(:nth-of-type(1)) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ul.tab-of-list>li.active-tab {
+    /* アクティブのタブ背景色 */
+    background-color: #121217;
+    color: #fcee0a; /* サイバーパンクイエロー */
+    font-weight: bold;
+    box-shadow: inset 0 0 0 1px #ff003c;
+    border-bottom: 1px solid #121217; /* 下線を消してパネルと繋げる */
+}
+
+.active-panel {
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #121217;
+    color: #00f3ff;
+}
+
+#panel_group>div:not(.active-panel) {
+    display: none;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+}
+
+fieldset {
+    border: 1px solid #ff003c;
+    box-shadow: 0 0 5px rgba(255, 0, 60, 0.2);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #09090b;
+}
+
+legend,
+.grid-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fcee0a; /* タイトルはイエロー */
+}
+
+button.emoji {
+    font-size: 16px;
+    padding: 2px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.button-menu {
+    background-color: #000;
+    color: #ff003c;
+    box-shadow: inset 0 0 0 1px #ff003c;
+    border: none;
+    padding: .4rem .6rem;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: auto;
+    line-height: 1;
+}
+
+.button-menu:hover {
+    background-color: #ff003c;
+    color: #000;
+}
+
+#result {
+    color: #00f3ff;
+    font-size: 13px;
+    padding-top: 3px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* メニュー */
+nav {
+    top: 2.1rem;
+    bottom: 0;
+    background: #121217;
+    z-index: 1;
+    right: 0.0rem;
+    overflow-x: hidden;
+    text-align: left;
+    width: 0;
+    position: fixed;
+    /* メニューの左端にネオンの光を落とす */
+    border-left: 1px solid #ff003c;
+    box-shadow: -2px 0 15px rgba(255, 0, 60, 0.3);
+}
+
+/* メニューを開いた時 */
+nav.open-menu {
+    width: 33.3%;
+    opacity: 1;
+}
+
+#download_sample {
+    font-size: 15px;
+}
+
+.tippy-box {
+    font-size: 12px;
+    background-color: #000 !important;
+    color: #00f3ff !important;
+    border: 1px solid #00f3ff;
+}
+
+.lt-unit {
+    font-size: large;
+    color: #fcee0a;
+}
+
+textarea, input {
+    font-size: 16px;
+    background-color: #000;
+    color: #00f3ff;
+    border: 1px solid #00f3ff;
+    padding: 2px 4px;
+    font-family: inherit;
+}
+
+select {
+    font-size: 13px;
+    background-color: #000;
+    color: #00f3ff;
+    border: 1px solid #00f3ff;
+    padding: 2px 4px;
+    font-family: inherit;
+}
+
+#textarea_path {
+    width: 99%;
+}
+
+a {
+    color: #ff003c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.path-calc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.path-calc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.path-calc-row select {
+    flex: 1;
+    min-width: 0;
+}
+
+.path-calc-row.arrow-row {
+    justify-content: center;
+}
+
+.path-arrow {
+    flex-shrink: 0;
+    font-weight: bold;
+}
