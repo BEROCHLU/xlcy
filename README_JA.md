@@ -234,8 +234,7 @@ css.width
 │       ├── js/
 │       ├── licenses/
 │       ├── style/
-│       ├── uploads/
-│       └── vendor/
+│       └── uploads/
 ├── gulpfile.js
 ├── package.json
 ├── package-lock.json
@@ -247,7 +246,7 @@ css.width
 主要ファイル:
 
 - `public/index.php`: 軽量ルーターです。Excel 一覧取得、配置 JSON 保存、`index.html` 表示を担当します。
-- `public/index.html`: アプリ本体の HTML です。各 vendor ライブラリと `static/js/` を読み込みます。
+- `public/index.html`: アプリ本体の HTML です。各ライブラリを CDN 経由で読み込み、`static/js/` を読み込みます。
 - `public/static/js/workbook-utils.js`: Excel シートを Cytoscape 用の node / edge 配列へ変換します。
 - `public/static/js/entry.js`: グラフ描画、ファイル読み込み、配置保存・復元、経路計算を扱います。
 - `public/static/js/gridjs-updater.js`: サイドパネルの Grid.js テーブルと表示切り替えを扱います。
@@ -257,7 +256,6 @@ css.width
 - `public/static/js/jqtab.js`: タブ切り替えを扱います。
 - `public/static/style/cy-style.json`: Cytoscape の既定スタイルです。
 - `public/static/uploads/`: アップロード済み Excel と、同名の配置 JSON を置く場所です。
-- `public/static/vendor/`: ブラウザで使うサードパーティライブラリです。
 - `gulpfile.js`: ライセンス一覧生成とレビュー用 HTML 更新の gulp タスクを定義します。
 
 ## セットアップ

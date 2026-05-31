@@ -234,8 +234,7 @@ The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the
 │       ├── js/
 │       ├── licenses/
 │       ├── style/
-│       ├── uploads/
-│       └── vendor/
+│       └── uploads/
 ├── gulpfile.js
 ├── package.json
 ├── package-lock.json
@@ -247,7 +246,7 @@ The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the
 Key files:
 
 - `public/index.php`: Lightweight router. Handles Excel list retrieval, layout JSON saving, and displaying `index.html`.
-- `public/index.html`: Main app HTML. Loads each vendor library and `static/js/`.
+- `public/index.html`: Main app HTML. Loads each library via CDN and `static/js/`.
 - `public/static/js/workbook-utils.js`: Converts Excel sheets into Cytoscape node / edge arrays.
 - `public/static/js/entry.js`: Handles graph rendering, file loading, layout save / restore, and path calculation.
 - `public/static/js/gridjs-updater.js`: Handles the side-panel Grid.js tables and visibility toggles.
@@ -257,7 +256,6 @@ Key files:
 - `public/static/js/jqtab.js`: Handles tab switching.
 - `public/static/style/cy-style.json`: Default Cytoscape style.
 - `public/static/uploads/`: Location for uploaded Excel files and layout JSON files with the same names.
-- `public/static/vendor/`: Third-party libraries used in the browser.
 - `gulpfile.js`: Defines gulp tasks for license list generation and review HTML updates.
 
 ## Setup

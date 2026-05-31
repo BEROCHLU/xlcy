@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Excel-driven Network Graph Viewer",
   "scripts": {
-    "build:inline": "npx gulp build:inline",
+    "build:js": "npx gulp build:js",
+    "review:inline": "npx gulp review:inline",
     "build:license": "npx gulp build:license"
   },
   "keywords": [],
@@ -13,6 +14,7 @@
     "gulp": "^5.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-order": "^1.2.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2"
   }
 }
