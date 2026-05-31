@@ -347,6 +347,10 @@ entry.js
 
 Nodes on the path may not have `weight` values. In Excel files used for path calculation, enter numeric `weight` values for all nodes.
 
+### `Invalid filename encoding detected` Error with Non-ASCII File Names
+
+This error occurs when the FTP client sends file names in a non-UTF-8 encoding such as Shift-JIS. Rename the file using ASCII characters, or set your FTP client's charset to UTF-8 (in FileZilla: Site Manager → Charset → "Force UTF-8").
+
 ## Documentation
 
 - `docs/functions.md`: Overview of JavaScript functions

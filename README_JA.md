@@ -347,6 +347,10 @@ entry.js
 
 経路上のノードに `weight` が入っていない可能性があります。経路計算を使う Excel では、すべてのノードに `weight` を数値で入れてください。
 
+### 日本語ファイル名で `Invalid filename encoding detected` が出る
+
+FTP クライアントがファイル名を Shift-JIS で送信していると、サーバー上のファイル名が非 UTF-8 になり、このエラーが発生します。ファイル名を ASCII（英数字）にするか、FTP クライアントの文字セットを UTF-8 に設定してください（FileZilla の場合: サーバーマネージャー → 文字セット → 「UTF-8を強制」）。
+
 ## ドキュメント
 
 - `docs/functions.md`: JavaScript 関数の概要
