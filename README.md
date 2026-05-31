@@ -32,7 +32,6 @@ Serve `public/` from a web server that can run PHP. To save layout JSON files on
 - Save and restore layouts by downloading local JSON files.
 - Save layout JSON files to `static/uploads/` on the server and automatically restore them when loading an Excel file with the same name.
 - Generate a third-party license list.
-- Inline-update `public/review.html` for generative AI review.
 
 ## Screen Layout
 
@@ -207,7 +206,7 @@ The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the
 | DOM operations, tab switching | jQuery |
 | Array and object processing | lodash |
 | Date handling | moment |
-| Selection UI | selection.js |
+| Selection UI | Grid.js RowSelection plugin |
 | File saving | FileSaver.js |
 | Routing, Excel list retrieval, layout JSON saving | PHP |
 | Maintenance tasks | Node.js + gulp |
@@ -227,7 +226,9 @@ The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the
 ├── public/
 │   ├── index.php
 │   ├── index.html
-│   ├── review.html
+│   ├── dist/
+│   │   ├── bundle.js
+│   │   └── LICENSE.txt
 │   └── static/
 │       ├── css/
 │       ├── image/
@@ -246,7 +247,8 @@ The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the
 Key files:
 
 - `public/index.php`: Lightweight router. Handles Excel list retrieval, layout JSON saving, and displaying `index.html`.
-- `public/index.html`: Main app HTML. Loads each library via CDN and `static/js/`.
+- `public/index.html`: Main app HTML. Loads each library via CDN and `public/dist/bundle.js`.
+- `public/dist/bundle.js`: JavaScript bundle generated from `public/static/js/`.
 - `public/static/js/workbook-utils.js`: Converts Excel sheets into Cytoscape node / edge arrays.
 - `public/static/js/entry.js`: Handles graph rendering, file loading, layout save / restore, and path calculation.
 - `public/static/js/gridjs-updater.js`: Handles the side-panel Grid.js tables and visibility toggles.
@@ -256,7 +258,7 @@ Key files:
 - `public/static/js/jqtab.js`: Handles tab switching.
 - `public/static/style/cy-style.json`: Default Cytoscape style.
 - `public/static/uploads/`: Location for uploaded Excel files and layout JSON files with the same names.
-- `gulpfile.js`: Defines gulp tasks for license list generation and review HTML updates.
+- `gulpfile.js`: Defines gulp tasks for JavaScript bundle generation and license list generation.
 
 ## Setup
 
@@ -270,7 +272,7 @@ Requirements:
 - Browser that supports ES6 or later
 - XAMPP is assumed when using Windows
 
-`npm install` is required only when running `npm run build:license` or `npm run build:inline`.
+`npm install` is required only when running maintenance tasks such as `npm run build:js`, `npm run build:js-dev`, or `npm run build:license`.
 
 ```bash
 npm install
@@ -288,20 +290,26 @@ On Windows, running `run_Windows.bat` opens the XAMPP Control Panel and opens th
 
 ## Maintenance
 
+### Regenerate JavaScript Bundle
+
+Combines and minifies JavaScript files in `public/static/js/` in the defined order and updates `public/dist/bundle.js`.
+
+```bash
+npm run build:js
+```
+
+For a bundle with a source map, run:
+
+```bash
+npm run build:js-dev
+```
+
 ### Regenerate License List
 
-Combines license files under `public/static/licenses/` and updates `public/static/licenses/LICENSE.txt`.
+Combines license files under `public/static/licenses/` and updates `public/dist/LICENSE.txt`.
 
 ```bash
 npm run build:license
-```
-
-### Update HTML for Generative AI Review
-
-Combines and minifies JavaScript files in `public/static/js/` in the defined order, then injects them into the `<script>` tag in `public/review.html`. This is not required for normal app execution.
-
-```bash
-npm run build:inline
 ```
 
 The concatenation order is defined in `gulpfile.js` as follows.
@@ -350,4 +358,4 @@ Nodes on the path may not have `weight` values. In Excel files used for path cal
 
 This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-Third-party library licenses are collected in `public/static/licenses/LICENSE.txt`.
+Third-party library licenses are collected in `public/dist/LICENSE.txt`.
