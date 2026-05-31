@@ -1,29 +1,43 @@
 @charset "utf-8";
 
 body {
-    height: calc(100vh - 1.0rem);
-    margin: 4px;
+    /* 1. 高さを画面いっぱいにし、Flexboxを有効にする */
+    height: 100vh;
+    margin: 0;
     background-color: #fdeff2;
     font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 余計なスクロールバーが出るのを防ぐ */
 }
 
 header {
     align-items: center;
     background: #ffe6f0;
-    padding: .2rem .4rem .2rem .4rem;
-    width: calc(100% - 0.8rem);
+    padding: .2rem .4rem;
+    /* 2. widthの計算をシンプルに */
+    width: 100%;
+    box-sizing: border-box; /* paddingを含めて100%にする */
     position: relative;
+    /* ※ flexコンテナ内なので、中身のコンテンツに合わせて自動で高さが確保されます */
 }
 
 main.wrapper {
-    height: calc(100% - 1.8rem);
+    /* 3. ヘッダーが使った以外の「残りの高さ」をすべて埋める */
+    flex: 1;
     width: 100%;
     position: relative;
+    /* height: calc(100% - 1.8rem); は削除 */
 }
 
 #cy {
     height: 100%;
     width: 100%;
+    background-color: #fdeff2;
+    background-image:
+        linear-gradient(#fdaec7 1px, transparent 1px),
+        linear-gradient(90deg, #fdaec7 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
 .grid-wrapper {
@@ -163,16 +177,18 @@ button.emoji {
 
 /* メニュー */
 nav {
-    height: calc(100vh - 2.8rem);
+    top: 2.1rem;    /* ヘッダーの高さ分だけ上を開ける */
+    bottom: 0;      /* 画面の一番下までしっかり伸ばす */
     background: #ffe6f0;
     z-index: 1;
-    top: 2.1rem;
     right: 0.0rem;
     overflow-x: hidden;
     text-align: left;
     width: 0;
     /*transition: .2s;*/
-    position: absolute;
+    
+    /* ★ここがポイント：absolute から fixed に変更 */
+    position: fixed;
 }
 
 /* メニューを開いた時 */

@@ -19,7 +19,6 @@ const jsOrder = [
 
 /**
  * 本番ビルド: 結合・圧縮のみ（ソースマップなし）
- * コマンド「npm run build:js」で実行される
  */
 gulp.task('build:js', function () {
     return gulp.src(jsSrc)
@@ -31,7 +30,6 @@ gulp.task('build:js', function () {
 
 /**
  * 開発ビルド: 結合・圧縮＋ソースマップ付き
- * コマンド「npm run build:js-dev」で実行される
  */
 gulp.task('build:js-dev', function () {
     return gulp.src(jsSrc)
@@ -45,7 +43,6 @@ gulp.task('build:js-dev', function () {
 
 /**
  * ライセンスタスク: 各サードパーティライブラリのライセンスファイルを統合して dist/LICENSE.txt を生成する
- * コマンド「npm run build:license」で実行される
  */
 gulp.task('build:license', function () {
     return gulp.src([
@@ -59,7 +56,6 @@ gulp.task('build:license', function () {
 /**
  * インライン化タスク: JSをメモリ上で結合・圧縮し、そのまま index.html へ直接流し込む
  * (中間ファイル bundle.js のディスク生成は行いません)
- * コマンド「npm run review:inline」で実行される
  */
 /*
 gulp.task('review:inline', function (done) {
