@@ -4,6 +4,7 @@
   "description": "Excel-driven Network Graph Viewer",
   "scripts": {
     "build:js": "npx gulp build:js",
+    "build:js-dev": "npx gulp build:js-dev",
     "build:license": "npx gulp build:license"
   },
   "keywords": [],
