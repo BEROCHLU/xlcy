@@ -356,6 +356,4 @@ entry.js
 
 ## ライセンス
 
-このリポジトリは MIT License です。詳細は [LICENSE](LICENSE) を参照してください。
-
-サードパーティライブラリのライセンスは `public/dist/LICENSE.txt` にまとめています。
+このリポジトリは MIT License です。サードパーティライブラリのライセンスは `public/dist/LICENSE.txt` にまとめています。

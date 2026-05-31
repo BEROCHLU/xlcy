@@ -356,6 +356,4 @@ Nodes on the path may not have `weight` values. In Excel files used for path cal
 
 ## License
 
-This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-Third-party library licenses are collected in `public/dist/LICENSE.txt`.
+This repository is licensed under the MIT License. Third-party library licenses are collected in `public/dist/LICENSE.txt`.
