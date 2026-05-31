@@ -24,7 +24,20 @@ gulp.task('build:js', function () {
         .pipe(concat('bundle.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./public/static/js'));
+        .pipe(gulp.dest('./public/dist'));
+});
+
+/**
+ * ライセンスタスク: 各サードパーティライブラリのライセンスファイルを統合して dist/LICENSE.txt を生成する
+ * コマンド「npm run build:license」で実行される
+ */
+gulp.task('build:license', function () {
+    return gulp.src([
+        './public/static/licenses/**/*',
+        '!./public/static/licenses/LICENSE.txt' // 自分自身を除外して無限結合を防ぐ
+    ])
+        .pipe(concat('LICENSE.txt'))
+        .pipe(gulp.dest('./public/dist'));
 });
 
 /**
@@ -32,6 +45,7 @@ gulp.task('build:js', function () {
  * (中間ファイル bundle.js のディスク生成は行いません)
  * コマンド「npm run review:inline」で実行される
  */
+/*
 gulp.task('review:inline', function (done) {
     let jsContent = '';
 
@@ -62,17 +76,4 @@ gulp.task('review:inline', function (done) {
             fs.writeFileSync(htmlPath, htmlContent, 'utf8');
             done();
         });
-});
-
-/**
- * ライセンスタスク: 各サードパーティライブラリのライセンスファイルを統合して public/static/licenses/LICENSE.txt を生成する
- * コマンド「npm run build:license」で実行される
- */
-gulp.task('build:license', function () {
-    return gulp.src([
-        './public/static/licenses/**/*',
-        '!./public/static/licenses/LICENSE.txt' // 自分自身を除外して無限結合を防ぐ
-    ])
-        .pipe(concat('LICENSE.txt'))
-        .pipe(gulp.dest('./public/static/licenses'));
-});
+});*/
