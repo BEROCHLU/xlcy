@@ -216,49 +216,48 @@ css.width
 ```text
 .
 ├── .github/
-│   ├── image1.png
+│   ├── image1.png                        # README 用スクリーンショット
 │   └── image2.png
 ├── docs/
-│   ├── functions.md
-│   ├── cheatsheet.md
-│   ├── css-property.md
+│   ├── functions.md                      # JavaScript 関数の概要説明
+│   ├── cheatsheet.md                     # Cytoscape.js 操作リファレンス
+│   ├── css-property.md                   # Excel で指定可能な Cytoscape スタイル一覧
 │   └── memo.txt
-├── public/
-│   ├── index.php
-│   ├── index.html
-│   ├── dist/
-│   │   ├── bundle.js
-│   │   └── LICENSE.txt
+├── public/                               # Web サーバーの公開ルート
+│   ├── index.php                         # PHP ルーター (Excel 一覧 API / 配置 JSON 保存)
+│   ├── index.html                        # アプリ本体 HTML (CDN で外部ライブラリを読み込み)
+│   ├── dist/                             # ビルド成果物 (Gulp で自動生成)
+│   │   ├── bundle.js                     #   結合・圧縮済み JS バンドル
+│   │   └── LICENSE.txt                   #   サードパーティライセンス一覧
 │   └── static/
-│       ├── css/
-│       ├── image/
-│       ├── js/
-│       ├── licenses/
+│       ├── css/                          # スタイルシート (modern.css, kawaii.css 等)
+│       ├── image/                        # ノード背景画像の配置先
+│       ├── js/                           # JS ソースコード (結合前) ※詳細は後述
+│       ├── licenses/                     # サードパーティライセンス原本
 │       ├── style/
-│       └── uploads/
-├── gulpfile.js
+│       │   └── cy-style.json             # Cytoscape グラフの初期スタイル定義
+│       └── uploads/                      # Excel / 配置 JSON の保管先
+├── gulpfile.js                           # JS 結合・圧縮 / ライセンス結合タスク
 ├── package.json
 ├── package-lock.json
-├── run_Windows.bat
-├── README.md
+├── run_Windows.bat                       # XAMPP 起動 + ブラウザ自動展開 (Windows 用)
+├── README.md                             # English README
 └── README_JA.md
 ```
 
-主要ファイル:
+### `public/static/js/` の構成
 
-- `public/index.php`: 軽量ルーターです。Excel 一覧取得、配置 JSON 保存、`index.html` 表示を担当します。
-- `public/index.html`: アプリ本体の HTML です。各ライブラリを CDN 経由で読み込み、`public/dist/bundle.js` を読み込みます。
-- `public/dist/bundle.js`: `public/static/js/` から生成される JavaScript バンドルです。
-- `public/static/js/workbook-utils.js`: Excel シートを Cytoscape 用の node / edge 配列へ変換します。
-- `public/static/js/entry.js`: グラフ描画、ファイル読み込み、配置保存・復元、経路計算を扱います。
-- `public/static/js/gridjs-updater.js`: サイドパネルの Grid.js テーブルと表示切り替えを扱います。
-- `public/static/js/tippy-attach.js`: `memo` からコメントポップアップを作成します。
-- `public/static/js/server-fetch.js`: サーバー上の Excel 一覧取得と配置 JSON 保存を扱います。
-- `public/static/js/cytoscape-gestures.js`: Cytoscape 要素の操作補助を扱います。
-- `public/static/js/jqtab.js`: タブ切り替えを扱います。
-- `public/static/style/cy-style.json`: Cytoscape の既定スタイルです。
-- `public/static/uploads/`: アップロード済み Excel と、同名の配置 JSON を置く場所です。
-- `gulpfile.js`: JavaScript バンドル生成とライセンス一覧生成の gulp タスクを定義します。
+バンドル対象の JS ソースです。`gulpfile.js` で定義された順序で結合されます。
+
+| ファイル | 役割 |
+| --- | --- |
+| `server-fetch.js` | Excel 一覧取得・配置保存など、サーバー側 PHP との非同期通信 |
+| `workbook-utils.js` | Excel シートのデータを Cytoscape 用ノード・エッジ構造に変換 |
+| `gridjs-updater.js` | サイドパネルの Grid.js テーブル更新・要素の表示切り替え |
+| `tippy-attach.js` | `memo` 列から Tippy.js コメント（ツールチップ）を生成・表示 |
+| `cytoscape-gestures.js` | クリック・タップ・コンテキストメニューなどのジェスチャー制御 |
+| `jqtab.js` | タブ切り替え UI |
+| `entry.js` | グラフ描画・ファイルロード・配置復元保存・経路計算の基本フロー |
 
 ## セットアップ
 
