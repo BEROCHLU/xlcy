@@ -64,8 +64,8 @@ if (preg_match('#/static/uploads$#', $requestPath) && $requestMethod === 'GET') 
     
     // POSTデータからJSONデータとファイル名を取得
     $jsonData = $_POST['json'];
-    // ファイル名に含まれる不正な文字を削除
-    $fileName = basename($_POST['filename']);
+    // ファイル名に含まれる不正な文字を削除 (マルチバイト文字対応のパス除去処理)
+    $fileName = str_replace(array('/', '\\', "\0"), '', $_POST['filename']);
     // 保存先ディレクトリ
     $saveDir = __DIR__ . '/static/uploads/';
     

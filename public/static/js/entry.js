@@ -198,7 +198,12 @@ document.querySelector('#upload_json').addEventListener('click', () => {
         method: 'POST',
         body: formData
     })
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(strMessage => {
             const DATE_NOW = moment().format('HH:mm:ss');
             const absoluteUrl = new URL(`./static/uploads/${strJsonName}`, window.location.href).href;
@@ -206,7 +211,7 @@ document.querySelector('#upload_json').addEventListener('click', () => {
             console.log(strMessage);
         })
         .catch(err => {
-            alert('Failed to overwrite save because the layout is being saved by another user');
+            alert('Failed to save layout. Please check server logs and directory write permissions.\n' + err.message);
             console.log(err);
         });
 });
