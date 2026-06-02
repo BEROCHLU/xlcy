@@ -36,7 +36,7 @@
 			<div id="panel_group">
 				<div class="active-panel" name="tab1">
 					<fieldset>
-						<legend>UPLOAD FILE</legend>
+						<legend>SERVER FILES</legend>
 						<p>
 							<select id="xlsx_file">
 							</select>
@@ -54,12 +54,6 @@
 							<label for="input_xlsx" class="label-button">Select and Show File</label>
 							<input type="file" id="input_xlsx" class="hidden-element" accept=".xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.macroEnabled.12">
 						</p>
-						<p class="save-restore">
-							<label for="download_json" class="label-button">Save Layout</label>
-							<button id="download_json" class="hidden-element"></button>
-							<label for="restore_json" class="label-button">Restore Layout</label>
-							<input type="file" id="restore_json" class="hidden-element" accept=".json,application/json">
-						</p>
 					</fieldset>
 					<p class="hidden-element">
 						<label for="edge_type">Edge Style</label>
@@ -70,10 +64,16 @@
 						</select>
 					</p>
 					<fieldset>
-						<legend>MEMO VISIBILITY</legend>
+						<legend>WORKSPACE</legend>
+						<p class="save-restore">
+							<label for="download_json" class="label-button">Export Layout</label>
+							<button id="download_json" class="hidden-element"></button>
+							<label for="restore_json" class="label-button">Import Layout</label>
+							<input type="file" id="restore_json" class="hidden-element" accept=".json,application/json">
+						</p>
 						<p>
-							<button class="show-tippy">Show All Memos</button>
-							<button class="hide-tippy">Hide All Memos</button>
+							<button class="show-tippy">Show Memos</button>
+							<button class="hide-tippy">Hide Memos</button>
 						</p>
 					</fieldset>
 					<fieldset>

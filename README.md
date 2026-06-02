@@ -39,7 +39,8 @@ The screen consists of Excel loading controls, a Cytoscape.js graph view, and si
 
 ### Excel Loading
 
-- In `UPLOAD FILE`, select an Excel file placed in `public/static/uploads/` from the dropdown and load it with `Show File`.
+- In `SERVER FILES`, select an Excel file placed in `public/static/uploads/` from the dropdown and load it with `Show File`.
+- Click the `💾` button next to `Show File` to save the currently selected server file name in browser `localStorage`; the saved selection is restored the next time the app opens.
 - In `LOCAL FILE`, select a local Excel file from `Select and Show File` and load it in the browser without uploading it to the server.
 - For uploaded Excel files, if a layout JSON file with the same name exists, it is automatically restored after rendering.
 
@@ -48,7 +49,7 @@ The screen consists of Excel loading controls, a Cytoscape.js graph view, and si
 - Click a node or edge to show its details and input/output edges in the side panel.
 - Drag nodes to change their positions.
 - Right-click or two-finger tap an element to toggle its comment display.
-- Use `Show All Memos` / `Hide All Memos` to toggle all comments at once.
+- Use `Show Memos` / `Hide Memos` in `WORKSPACE` to toggle all comments at once.
 - Use `All Models` / `All Nodes` / `All Edges` in `TAB 2` to switch the display target.
 - Use `all on` / `all off` to show or hide items in bulk by model.
 - Use `Calculate Path` to select the Dijkstra shortest path from the selected start node to the selected end node, and display the path and cost.
@@ -56,7 +57,7 @@ The screen consists of Excel loading controls, a Cytoscape.js graph view, and si
 ### Layout Saving
 
 - For uploaded Excel files, `Save Layout` saves the current Cytoscape layout to `public/static/uploads/<Excel file name>.json`.
-- For local Excel files, `Save Layout` downloads the layout JSON, and `Restore Layout` loads that JSON.
+- For local Excel files, `Export Layout` downloads the layout JSON, and `Import Layout` loads that JSON.
 - During restore, node / edge ID differences between the currently loaded Excel file and the saved JSON are compared, and differences are absorbed with the Excel side taking precedence.
 
 ## Data

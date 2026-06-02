@@ -39,7 +39,8 @@ XREA の Web サーバーで公開しています。
 
 ### Excel 読み込み
 
-- `UPLOAD FILE` では、`public/static/uploads/` に置いた Excel をプルダウンで選び、`Show File` で読み込めます。
+- `SERVER FILES` では、`public/static/uploads/` に置いた Excel をプルダウンで選び、`Show File` で読み込めます。
+- `Show File` 横の `💾` ボタンを押すと、現在選択中のサーバーファイル名をブラウザの `localStorage` に保存し、次回起動時にその選択を復元します。
 - `LOCAL FILE` では、`Select and Show File` から手元の Excel を選び、サーバーにアップロードせずにブラウザ内で読み込めます。
 - アップロード済み Excel は、同名の配置 JSON があれば描画後に自動復元されます。
 
@@ -48,7 +49,7 @@ XREA の Web サーバーで公開しています。
 - ノードやエッジをクリックすると、サイドパネルに詳細と入出力エッジが表示されます。
 - ノードはドラッグで配置を変更できます。
 - 右クリックまたは 2 本指タップで、その要素のコメント表示を切り替えられます。
-- `Show All Memos` / `Hide All Memos` で、全コメントをまとめて切り替えられます。
+- `WORKSPACE` の `Show Memos` / `Hide Memos` で、全コメントをまとめて切り替えられます。
 - `TAB 2` の `All Models` / `All Nodes` / `All Edges` で、表示対象を切り替えられます。
 - `all on` / `all off` で、モデル単位の一括表示と非表示を実行できます。
 - `Calculate Path` で、選択した始点から終点までの Dijkstra 最短経路を選択状態にし、経路とコストを表示できます。
@@ -56,7 +57,7 @@ XREA の Web サーバーで公開しています。
 ### 配置保存
 
 - アップロード済み Excel では、`Save Layout` で `public/static/uploads/<Excelファイル名>.json` に現在の Cytoscape 配置を保存します。
-- ローカル Excel では、`Save Layout` で配置 JSON をダウンロードし、`Restore Layout` でその JSON を読み込みます。
+- ローカル Excel では、`Export Layout` で配置 JSON をダウンロードし、`Import Layout` でその JSON を読み込みます。
 - 復元時は、現在読み込んでいる Excel と保存 JSON の node / edge ID 差分を比較し、Excel 側を優先して差分を吸収します。
 
 ## データ
