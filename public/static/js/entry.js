@@ -374,7 +374,7 @@ document.querySelector('.lt').addEventListener('click', () => {
         strTextarea += `${str}\n`;
         // nodeのweightを加算する
         if (ele.isNode()) {
-            nWeight += ele.data('weight');
+            nWeight += ele.data('weight') ?? 0;
         }
         //console.log(ele.data('id'));
     });

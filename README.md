@@ -193,7 +193,7 @@ See `docs/css-property.md` for a reference list of available properties. Default
 
 Path calculation targets only the currently visible elements. Hidden nodes and edges are excluded from path search.
 
-The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the path is determined, `node.weight` values for nodes on the path are added to the result. If the path passes through a node whose `node.weight` is blank, the result becomes `NaN`; therefore, in Excel files used for path calculation, enter a numeric value of `0` or greater for every node's `weight`.
+The edge search cost is `edge.weight`, or `edge.value` if unspecified. After the path is determined, `node.weight` values for nodes on the path are added to the result. If a `node.weight` is blank (unspecified), it defaults to `0` for the calculation. If you want to apply custom node costs, enter a numeric value for the node's `weight`.
 
 ## Technical Stack
 
@@ -346,7 +346,7 @@ entry.js
 
 ### Path Calculation Result Becomes `NaN`
 
-Nodes on the path may not have `weight` values. In Excel files used for path calculation, enter numeric `weight` values for all nodes.
+A node or edge `weight` or `value` on the path may contain non-numeric characters. Check that all values are half-width numeric digits (note that blank node `weight` fields automatically default to `0`).
 
 ### `Invalid filename encoding detected` Error with Non-ASCII File Names
 
