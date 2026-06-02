@@ -3,4 +3,4 @@
 start "" "C:\xampp\xampp-control.exe"
 
 :: ブラウザでプロジェクトのURLを開く
-start http://localhost/xlcy/public/
+start http://localhost/xlcy/public/index.php

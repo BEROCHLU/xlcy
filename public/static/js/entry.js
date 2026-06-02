@@ -445,7 +445,7 @@ function appendOption() {
  * @param {File} file - The file to be processed.
  * @return {Promise<void>} A Promise that resolves when the processing is complete, return is not necessary
  */
-async function beginDrawCytoscape(file, isRemote = false) {
+async function beginDrawCytoscape(file, isServer = false) {
 
     const data = await file.arrayBuffer();
     workbook = XLSX.read(data, {
@@ -463,10 +463,14 @@ async function beginDrawCytoscape(file, isRemote = false) {
     appendOption();
     cyCreateTippy();
 
-    strExcelName = _.split(file.name, '.', 1);
+    if (isServer) {
+        strExcelName = _.split(xlsx_file.value, '.', 1);
+    } else {
+        strExcelName = _.split(file.name, '.', 1);
+    }
     document.getElementById('edge_type').value = 'bezier';
 
-    if (isRemote) {
+    if (isServer) {
         // Automatically restore layout if it exists
         const strJsonName = `${_.split(xlsx_file.value, '.', 1)}.json`;
         const url = `./static/uploads/${strJsonName}`;
